@@ -16,7 +16,7 @@ const languages = [
 ];
 
 const Header = () => (
-  <header className={clsx(cn.header, 'bg-black-light')}>
+  <header className={clsx(cn.header, 'bg-black-300')}>
     <div className="flex justify-between items-center container mx-auto px-4">
       <div>
         <img src="/img/header/logo.png" alt="logo" />

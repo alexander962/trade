@@ -1,3 +1,5 @@
+import 'animate.css/animate.min.css';
+
 import type { NextPage } from 'next';
 import React from 'react';
 

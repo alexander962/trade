@@ -2,10 +2,15 @@ import clsx from 'clsx';
 import React from 'react';
 
 import cn from '../../../styles/Home.module.css';
+import Assets from './assets';
+import Promo from './Promo';
+import Statistic from './Statistic';
 
 const Main = () => (
   <section className={clsx(cn.main)}>
-    <div className="container mx-auto px-4 font-inter"> Это у нас Main </div>
+    <Promo />
+    <Statistic />
+    <Assets />
   </section>
 );
 
