@@ -4,12 +4,17 @@ import React, { FC } from 'react';
 import cn from './style.module.sass';
 
 interface ISmallTextProps {
-  children: string;
-  properties: string;
+  children: any;
+  properties?: string;
+  color?: string;
 }
 
-const CommonSmallText: FC<ISmallTextProps> = ({ children = '', properties = '' }) => (
-  <div className={clsx(cn.small_text, `text-gray-100 text-base font-inter + ${properties}`)}>
+const CommonSmallText: FC<ISmallTextProps> = ({
+  children = '',
+  properties = '',
+  color = 'text-gray-100',
+}) => (
+  <div className={clsx(cn.small_text, `${color} + text-base font-inter + ${properties}`)}>
     {children}
   </div>
 );

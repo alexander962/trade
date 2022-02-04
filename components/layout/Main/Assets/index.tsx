@@ -28,21 +28,23 @@ const Reveal: FC<IScroll> = ({ children }) => (
 );
 
 const Assets = () => (
-  <section className={clsx(cn.assets, 'md:pt-72px md:pb-112px')}>
-    <CommonTitle properties="text-center">Огромный выбор</CommonTitle>
-    <CommonSmallText properties="mt-24px text-center">
-      От хорошо известных активов до новинок индустрии — тебе решать чем торговать!
-    </CommonSmallText>
+  <section className={clsx(cn.assets, 'md:pt-72px md:pb-112px pt-56px pb-80px')}>
+    <div className="container mx-auto px-4">
+      <CommonTitle properties="text-center">Огромный выбор</CommonTitle>
+      <CommonSmallText properties="mt-24px text-center">
+        От хорошо известных активов до новинок индустрии — тебе решать чем торговать!
+      </CommonSmallText>
 
-    <div className={clsx(cn.assets__blocks, 'flex flex-wrap')}>
-      {obj.map(({ id, icon, text }, index) => (
-        <div key={`assets+${id}`} className={clsx(cn.assets__block_out, 'px-4')}>
-          <div className={clsx(cn.assets__block, 'flex items-center w-full w-288px')}>
-            <img src={icon} alt="icon" className="mr-20px" />
-            <span>{text}</span>
+      <div className={clsx(cn.assets__blocks)}>
+        {obj.map(({ id, icon, text }, index) => (
+          <div key={`assets+${id}`} className={clsx(cn.assets__block_external)}>
+            <div className={clsx(cn.assets__block_inner)}>
+              <img src={icon} alt="icon" className="mr-20px" />
+              <span>{text}</span>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 );
@@ -50,11 +52,6 @@ const Assets = () => (
 export default Assets;
 
 const obj = [
-  {
-    id: 0,
-    icon: '/img/assets/assets-img-1.svg',
-    text: 'NEO',
-  },
   {
     id: 1,
     icon: '/img/assets/assets-img-2.svg',
@@ -76,16 +73,6 @@ const obj = [
     text: 'Doge',
   },
   {
-    id: 5,
-    icon: '/img/assets/assets-img-6.svg',
-    text: 'Text',
-  },
-  {
-    id: 6,
-    icon: '/img/assets/assets-img-7.svg',
-    text: 'Link',
-  },
-  {
     id: 7,
     icon: '/img/assets/assets-img-8.svg',
     text: 'Ripple',
@@ -104,10 +91,5 @@ const obj = [
     id: 10,
     icon: '/img/assets/assets-img-11.svg',
     text: 'Stellar',
-  },
-  {
-    id: 11,
-    icon: '/img/assets/assets-img-12.svg',
-    text: 'Tron',
   },
 ];
