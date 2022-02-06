@@ -42,13 +42,14 @@ const Tools = () => {
 
   const settings = {
     dots: true,
-    dotsClass: 'slick-dots',
+    dotsClass: 'slick-dots tools-slick-dots',
     arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   return (
     <section className={clsx(cn.tools, 'bg-black-100 pt-56px relative')}>
       <div className="container mx-auto px-4">

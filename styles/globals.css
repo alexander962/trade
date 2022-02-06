@@ -27,18 +27,29 @@ a {
   box-sizing: border-box;
 }
 
-.slick-dots {
+
+.tools-slick-dots {
   bottom: 152px;
   z-index: 99;
 }
 
-.slick-dots li.slick-active button:before {
+.feedback-slick-dots li.slick-active button:before {
+  opacity: 1;
+  font-size: 16px;
+}
+
+.feedback-slick-dots li button:before {
+  font-size: 16px;
+  color: #282F38;
+}
+
+.tools-slick-dots li.slick-active button:before {
   opacity: 1;
   color: white;
   font-size: 16px;
 }
 
-.slick-dots li button:before {
+.tools-slick-dots li button:before {
   font-size: 16px;
   color: #282F38;
 }

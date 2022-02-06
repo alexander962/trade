@@ -8,6 +8,7 @@ import Feedback from './Feedback';
 import Promo from './Promo';
 import Statistic from './Statistic';
 import Tools from './Tools';
+import Start from './Start';
 
 const Main = () => (
   <section className={clsx(cn.main)}>
@@ -17,6 +18,7 @@ const Main = () => (
     <Advantage />
     <Tools />
     <Feedback />
+    <Start />
   </section>
 );
 

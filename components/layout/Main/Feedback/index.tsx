@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import React, { FC } from 'react';
+import React, { FC, useLayoutEffect, useState } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 import CommonSmallText from '../../../common-components/common-small-text';
 import CommonTitle from '../../../common-components/common-title';
 import cn from './style.module.sass';
+import Slider from 'react-slick';
 
 interface IScroll {
   children: any;
@@ -15,6 +16,20 @@ type obj = {
   date: string;
   header: string;
   text: string;
+};
+
+const useWindowSize = () => {
+  React.useLayoutEffect = React.useEffect;
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
 };
 
 const Reveal: FC<IScroll> = ({ children }) => (
@@ -28,28 +43,63 @@ const Reveal: FC<IScroll> = ({ children }) => (
   </ScrollAnimation>
 );
 
-const Feedback = () => (
-  <section className={clsx(cn.feedback, 'md:pt-72px md:pb-64px pt-72px pb-64px')}>
-    <div className="container mx-auto px-4">
-      <CommonTitle properties="text-center">Фидбек наших пользователей</CommonTitle>
+const Feedback = () => {
+  const [width, height] = useWindowSize();
 
-      <div className={clsx(cn.feedback__blocks)}>
-        {obj.map(({ id, date, header, text }, index) => (
-          <div key={`assets+${id}`} className={clsx(cn.feedback__block_external)}>
-            <div className={clsx(cn.feedback__block_inner)}>
-              <img src="/img/feedback/feedback-icon.svg" alt="icon" className="mr-20px" />
-              <div className="font-inter text-15px text-gray-200 leading-21px mt-14px">{date}</div>
-              <CommonSmallText color="text-black-400" properties="mt-19px">
-                {header}
-              </CommonSmallText>
-              <CommonSmallText properties="mt-1">{text}</CommonSmallText>
-            </div>
+  const settings = {
+    dots: true,
+    dotsClass: 'slick-dots feedback-slick-dots',
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  return (
+    <section className={clsx(cn.feedback, 'md:pt-72px md:pb-64px pt-56px pb-64px')}>
+      <div className="container mx-auto px-4">
+        <CommonTitle properties="text-center">Фидбек наших пользователей</CommonTitle>
+
+        {width > 1024 ? (
+          <div className={clsx(cn.feedback__blocks)}>
+            {obj.map(({ id, date, header, text }, index) => (
+              <div key={`assets+${id}`} className={clsx(cn.feedback__block_external)}>
+                <div className={clsx(cn.feedback__block_inner)}>
+                  <img src="/img/feedback/feedback-icon.svg" alt="icon" className="mr-20px" />
+                  <div className="font-inter text-15px text-gray-200 leading-21px mt-14px">
+                    {date}
+                  </div>
+                  <CommonSmallText color="text-black-400" properties="mt-19px">
+                    {header}
+                  </CommonSmallText>
+                  <CommonSmallText properties="mt-1">{text}</CommonSmallText>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        ) : (
+          <Slider {...settings} className={clsx(cn.feedback__blocks)}>
+            {obj.map(({ id, date, header, text }, index) => (
+              <div key={`assets+${id}`} className={clsx(cn.feedback__block_external)}>
+                <div className={clsx(cn.feedback__block_inner)}>
+                  <img src="/img/feedback/feedback-icon.svg" alt="icon" className="mr-20px" />
+                  <div className="font-inter text-15px text-gray-200 leading-21px mt-14px">
+                    {date}
+                  </div>
+                  <CommonSmallText color="text-black-400" properties="mt-19px">
+                    {header}
+                  </CommonSmallText>
+                  <CommonSmallText properties="mt-1">{text}</CommonSmallText>
+                </div>
+              </div>
+            ))}
+          </Slider>
+        )}
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Feedback;
 
