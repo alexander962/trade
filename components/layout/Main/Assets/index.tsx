@@ -1,9 +1,12 @@
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 import CommonSmallText from '../../../common-components/common-small-text';
 import CommonTitle from '../../../common-components/common-title';
+import { en } from '../../../local/locales/en';
+import { ru } from '../../../local/locales/ru';
 import cn from './style.module.sass';
 
 interface IScroll {
@@ -27,27 +30,30 @@ const Reveal: FC<IScroll> = ({ children }) => (
   </ScrollAnimation>
 );
 
-const Assets = () => (
-  <section className={clsx(cn.assets, 'md:pt-72px md:pb-112px pt-56px pb-80px')}>
-    <div className="container mx-auto px-4">
-      <CommonTitle properties="text-center">Огромный выбор</CommonTitle>
-      <CommonSmallText properties="mt-24px text-center">
-        От хорошо известных активов до новинок индустрии — тебе решать чем торговать!
-      </CommonSmallText>
+const Assets = () => {
+  const router = useRouter();
+  const t = router.locale === 'en' ? en : ru;
 
-      <div className={clsx(cn.assets__blocks)}>
-        {obj.map(({ id, icon, text }, index) => (
-          <div key={`assets+${id}`} className={clsx(cn.assets__block_external)}>
-            <div className={clsx(cn.assets__block_inner)}>
-              <img src={icon} alt="icon" className="mr-20px" />
-              <span>{text}</span>
+  return (
+    <section className={clsx(cn.assets, 'md:pt-72px md:pb-112px pt-56px pb-80px')}>
+      <div className="container mx-auto px-4">
+        <CommonTitle properties="text-center">{t.assetsTitle}</CommonTitle>
+        <CommonSmallText properties="mt-24px text-center">{t.assetsSubTitle}</CommonSmallText>
+
+        <div className={clsx(cn.assets__blocks)}>
+          {obj.map(({ id, icon, text }, index) => (
+            <div key={`assets+${id}`} className={clsx(cn.assets__block_external)}>
+              <div className={clsx(cn.assets__block_inner)}>
+                <img src={icon} alt="icon" className="mr-20px" />
+                <span>{text}</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Assets;
 

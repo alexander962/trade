@@ -1,0 +1,42 @@
+@import "styles/css/config"
+
+
+.footer
+  padding: 56px 0 40px 0
+  animation-duration: 2s
+
+
+  &__main
+    margin: 0 -56px
+    +max-width(1400px)
+      margin: 0 -16px
+    +max-width($tablet)
+      margin: 0 -12px
+
+
+  &__external
+    padding: 0 16px
+    +max-width($tablet)
+      padding: 0 12px
+
+
+    span
+      +max-width($tablet)
+        display: none
+
+
+  hr
+    margin: 32px -56px
+    border-color: #282B31
+    +max-width(1400px)
+      margin: 32px -16px
+    +max-width($tablet)
+      margin: 32px 0
+
+
+  &__text
+    margin: 0 -56px
+    +max-width(1400px)
+      margin: 0 -16px
+    +max-width($tablet)
+      margin: 0

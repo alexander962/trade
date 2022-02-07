@@ -77,6 +77,9 @@ module.exports = {
       height: {
         '101px': '101px',
       },
+      screens: {
+        '380px': '380px',
+      },
     },
   },
 };

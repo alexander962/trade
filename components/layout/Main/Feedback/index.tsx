@@ -1,11 +1,14 @@
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
 import React, { FC, useLayoutEffect, useState } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
+import Slider from 'react-slick';
 
 import CommonSmallText from '../../../common-components/common-small-text';
 import CommonTitle from '../../../common-components/common-title';
+import { en } from '../../../local/locales/en';
+import { ru } from '../../../local/locales/ru';
 import cn from './style.module.sass';
-import Slider from 'react-slick';
 
 interface IScroll {
   children: any;
@@ -56,10 +59,13 @@ const Feedback = () => {
     slidesToScroll: 1,
   };
 
+  const router = useRouter();
+  const t = router.locale === 'en' ? en : ru;
+
   return (
     <section className={clsx(cn.feedback, 'md:pt-72px md:pb-64px pt-56px pb-64px')}>
       <div className="container mx-auto px-4">
-        <CommonTitle properties="text-center">Фидбек наших пользователей</CommonTitle>
+        <CommonTitle properties="text-center">{t.feedbackTitle}</CommonTitle>
 
         {width > 1024 ? (
           <div className={clsx(cn.feedback__blocks)}>

@@ -1,4 +1,5 @@
 @import 'css/fonts.css';
+@import 'animate.css/animate.min.css';
 
 @tailwind utilities;
 @tailwind base;
