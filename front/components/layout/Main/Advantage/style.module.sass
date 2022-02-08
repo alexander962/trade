@@ -1,0 +1,38 @@
+@import "styles/css/config"
+
+
+.advantage
+  &__main
+    margin: 0 -16px
+    +max-width($mobail)
+      margin: 0
+
+
+  &__block_external
+    display: flex
+    width: calc((100% / 12)*4)
+    padding: 0 16px
+    margin-bottom: 32px
+    +max-width($tablet)
+      width: calc((100% / 12)*6)
+    +max-width($mobail)
+      width: 100%
+      padding: 0
+
+
+  &__block_inner
+    display: flex
+    align-items: stretch
+    flex-direction: column
+    flex: 1
+    padding: 48px 32px 32px 32px
+    background: #F6F7FA
+    border-radius: 8px
+    +max-width($mobail)
+      padding: 48px 16px 32px 16px
+
+
+  &__block_img
+    width: 104px
+    height: 104px
+    margin: 0 auto

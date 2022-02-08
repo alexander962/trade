@@ -1,0 +1,46 @@
+@import "styles/css/config"
+
+
+.start
+  &__main
+    margin: 40px -16px 32px -16px
+    +max-width($tablet)
+      margin: 56px 0 64px 0
+
+
+  &__block_external
+    width: calc((100% / 12) * 2.5)
+    padding: 0 16px
+    +max-width($tablet)
+      width: 100%
+      padding: 0
+      margin-bottom: 80px
+
+
+      &:last-child
+        margin-bottom: 0
+
+
+  &__block_inner
+    img
+      margin: 0 auto
+
+
+  &__img_external
+    width: calc((100% / 12) * 2)
+    padding: 0 16px
+    +max-width($tablet)
+      display: none
+
+
+  &__img_inner
+    margin-top: 50px
+
+
+    img
+      margin: 0 auto
+
+
+  Button
+    +max-width($tablet)
+      display: none

@@ -1,0 +1,27 @@
+@import "styles/css/config"
+@import "styles/css/animation"
+
+.promo
+  padding: 104px 0 36px 0
+  +max-width($tablet)
+    padding: 56px 0 24px 0
+
+
+  &__block_left
+    width: calc((100% / 12)*5)
+    animation-duration: 1s
+    +max-width($tablet)
+      width: 100%
+
+
+
+  &__block_right
+    width: calc((100% / 12)*7 + 40px)
+    animation-duration: 1s
+    margin: 24px -40px 0 0
+    +max-width($tablet)
+      width: 100%
+      margin: 100px 0 0 0
+    +max-width($mobail)
+      display: none
+
