@@ -40,14 +40,14 @@ export const en = {
   footerSub: '© 2018 - 2021 WhiteBIT.com All rights reserved.',
 
   registrationTitle: 'Registration',
-  registrationLogin: 'Login:',
+  registrationLogin: 'Email:',
   registrationPassword: 'Password:',
   registrationRepeatPassword: 'Repeat password:',
   registrationButton: 'Register',
   registrationLogIn: 'Login',
 
   loginTitle: 'Login',
-  loginLogin: 'Login:',
+  loginLogin: 'Email:',
   loginPassword: 'Password:',
   loginButton: 'Login',
   loginRegistration: 'Register',

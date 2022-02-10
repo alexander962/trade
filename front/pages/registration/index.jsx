@@ -8,6 +8,8 @@ import MuiAlert from '@material-ui/lab/Alert';
 
 import { en } from '../../components/local/locales/en';
 import { ru } from '../../components/local/locales/ru';
+import ScrollAnimation from 'react-animate-on-scroll';
+import 'animate.css/animate.compat.css';
 
 import CommonTitle from '../../components/common-components/common-title';
 import cn from './style.module.sass';
@@ -18,7 +20,7 @@ function Alert(props) {
 }
 
 const Registration = () => {
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [open, setOpen] = useState(false);
@@ -44,42 +46,45 @@ const Registration = () => {
 
   const addNewUser = async () => {
     try {
-      await axios.post('http://localhost:3001/createUser', {
-        login: login,
+      const response = await axios.post('http://localhost:3001/api/registration', {
+        email: email,
         password: password,
       });
       setSeverity('success');
       setMessage('Вы удачно зарегестрированны');
       setOpen(true);
-      localStorage.setItem('user', 'user');
+      localStorage.setItem('token', response.data.accessToken);
+      localStorage.setItem('user', response.data.user.email);
       onResetFilters();
-      // window.location.reload();
     } catch (e) {
       setSeverity('error');
-      setMessage('Такой пользователь уже существует');
+      setMessage('Ошибка сервера');
       setOpen(true);
+      // console.log('Это моя ошибка ' + e.process.data.message);
     }
   };
 
   const onClickRegisterBtn = e => {
     console.log('I am here!!!');
-    if (login === '' || password === '' || repeatPassword === '') {
+    if (email === '' || password === '' || repeatPassword === '') {
       setMessage('Заполните все поля!');
       setOpen(true);
     } else if (login.length < 6) {
       setMessage('Минимальное колличество символов для Login = 6');
       setOpen(true);
-    } else if (!/(?=.*[0-9])(?=.*[A-Za-z]){5,}/.test(password)) {
-      setMessage(
-        'Введите в поле password не менее 6 латинских символов, минимум 1 из которых является числом'
-      );
+    } else if (
+      !/^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email
+      )
+    ) {
+      setMessage('Введите корректный email, по типу example@mail.com');
       setOpen(true);
     } else if (password !== repeatPassword) {
       setMessage('Пароли не совпадают!');
       setOpen(true);
     } else {
       addNewUser();
-      setLogin('');
+      setEmail('');
       setPassword('');
       setRepeatPassword('');
     }
@@ -115,67 +120,69 @@ const Registration = () => {
   return (
     <section className={clsx(cn.registration, 'bg-black-100 h-full')}>
       <div className="container mx-auto px-4 text-white">
-        <div className={clsx(cn.registration__form, 'bg-white p-16')}>
-          <CommonTitle color="text-black-100">{t.registrationTitle}</CommonTitle>
-          <form onSubmit={handleSubmit}>
-            <label className="font-inter text-black-100 text-2xl inline-block" htmlFor="login">
-              {t.registrationLogin}
-            </label>
-            <input
-              type="text"
-              id="login"
-              placeholder="Login"
-              value={login}
-              onChange={e => setLogin(e.target.value)}
-            />
-
-            <label className="font-inter text-black-100 text-2xl" htmlFor="password">
-              {t.registrationPassword}
-            </label>
-            <div className={clsx(cn.password_block, 'password_block')}>
+        <ScrollAnimation animateIn="fadeInUp" offset={50} animateOnce={true} duration={1}>
+          <div className={clsx(cn.registration__form, 'bg-white p-16')}>
+            <CommonTitle color="text-black-100">{t.registrationTitle}</CommonTitle>
+            <form onSubmit={handleSubmit}>
+              <label className="font-inter text-black-100 text-2xl inline-block" htmlFor="login">
+                {t.registrationLogin}
+              </label>
               <input
-                type="password"
-                id="password"
-                placeholder="Password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
+                type="text"
+                id="login"
+                placeholder="Email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
               />
-              <img
-                src="/img/registration/view.svg"
-                alt="view"
-                className={clsx(cn.password_control, 'password_control')}
-                id="password_control"
-                onClick={() => showHidePassword()}
-              />
-            </div>
 
-            <label className="font-inter text-black-100 text-2xl" htmlFor="password">
-              {t.registrationRepeatPassword}
-            </label>
-            <div className={clsx(cn.password_block__repeat, '')}>
-              <input
-                type="password"
-                id="password-repeat"
-                placeholder="Password"
-                value={repeatPassword}
-                onChange={e => setRepeatPassword(e.target.value)}
-              />
-              <img
-                src="/img/registration/view.svg"
-                className={clsx(cn.password_control__repeat, 'password_control__repeat')}
-                id="password_control__repeat"
-                onClick={() => showHidePasswordRepeat()}
-              />
-            </div>
+              <label className="font-inter text-black-100 text-2xl" htmlFor="password">
+                {t.registrationPassword}
+              </label>
+              <div className={clsx(cn.password_block, 'password_block')}>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                />
+                <img
+                  src="/img/registration/invisible.svg"
+                  alt="view"
+                  className={clsx(cn.password_control, 'password_control')}
+                  id="password_control"
+                  onClick={() => showHidePassword()}
+                />
+              </div>
 
-            <div className={clsx(cn.send_block, '')}>
-              <button onClick={e => onClickRegisterBtn(e)}>{t.registrationButton}</button>
-              <Link href="/autorization">
-                <span className="text-black-100 cursor-pointer">{t.registrationLogIn}</span>
-              </Link>
-            </div>
-          </form>
-        </div>
+              <label className="font-inter text-black-100 text-2xl" htmlFor="password">
+                {t.registrationRepeatPassword}
+              </label>
+              <div className={clsx(cn.password_block__repeat, '')}>
+                <input
+                  type="password"
+                  id="password-repeat"
+                  placeholder="Password"
+                  value={repeatPassword}
+                  onChange={e => setRepeatPassword(e.target.value)}
+                />
+                <img
+                  src="/img/registration/invisible.svg"
+                  className={clsx(cn.password_control__repeat, 'password_control__repeat')}
+                  id="password_control__repeat"
+                  onClick={() => showHidePasswordRepeat()}
+                />
+              </div>
+
+              <div className={clsx(cn.send_block, '')}>
+                <button onClick={e => onClickRegisterBtn(e)}>{t.registrationButton}</button>
+                <Link href="/autorization">
+                  <span className="text-black-100 cursor-pointer">{t.registrationLogIn}</span>
+                </Link>
+              </div>
+            </form>
+          </div>
+        </ScrollAnimation>
       </div>
 
       <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>

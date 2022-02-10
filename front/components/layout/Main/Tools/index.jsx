@@ -11,10 +11,6 @@ import { en } from '../../../local/locales/en';
 import { ru } from '../../../local/locales/ru';
 import cn from './style.module.sass';
 
-interface IScroll {
-  children: any;
-}
-
 const useWindowSize = () => {
   React.useLayoutEffect = React.useEffect;
   const [size, setSize] = useState([0, 0]);
@@ -29,7 +25,7 @@ const useWindowSize = () => {
   return size;
 };
 
-const Reveal: FC<IScroll> = ({ children }) => (
+const Reveal = ({ children }) => (
   <ScrollAnimation
     animateIn="fadeIn"
     animateOut="fadeOut"
@@ -40,11 +36,7 @@ const Reveal: FC<IScroll> = ({ children }) => (
   </ScrollAnimation>
 );
 
-interface Props {
-  user: string;
-}
-
-const Tools: FC<Props> = ({ user }) => {
+const Tools = ({ user }) => {
   const [width, height] = useWindowSize();
 
   const settings = {

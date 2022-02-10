@@ -1,28 +1,14 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
-import ScrollAnimation from 'react-animate-on-scroll';
 
 import CommonSmallText from '../../../common-components/common-small-text';
 import CommonTitle from '../../../common-components/common-title';
 import { en } from '../../../local/locales/en';
 import { ru } from '../../../local/locales/ru';
 import cn from './style.module.sass';
-
-interface IScroll {
-  children: any;
-}
-
-const Reveal: FC<IScroll> = ({ children }) => (
-  <ScrollAnimation
-    animateIn="fadeIn"
-    animateOut="fadeOut"
-    duration={1}
-    // offset={400}
-  >
-    {children}
-  </ScrollAnimation>
-);
+import ScrollAnimation from 'react-animate-on-scroll';
+import 'animate.css/animate.min.css';
 
 const Advantage = () => {
   const router = useRouter();
@@ -32,7 +18,6 @@ const Advantage = () => {
     <section className={(clsx(cn.advantage), 'pb-128px')}>
       <div className="container mx-auto px-4">
         <CommonTitle properties="text-center">{t.advantageTitle}</CommonTitle>
-
         <div className={(clsx(cn.advantage__main), 'flex flex-wrap md:mt-64px mt-8')}>
           <div className={clsx(cn.advantage__block_external)}>
             <div className={clsx(cn.advantage__block_inner, 'text-center')}>

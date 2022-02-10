@@ -11,13 +11,15 @@ import cn from './style.module.sass';
 import Link from 'next/link';
 import { en } from '../../components/local/locales/en';
 import { ru } from '../../components/local/locales/ru';
+import ScrollAnimation from 'react-animate-on-scroll';
+import 'animate.css/animate.compat.css';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const Autorization = () => {
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
@@ -43,33 +45,36 @@ const Autorization = () => {
 
   const signInCheck = async () => {
     try {
-      await axios.post('http://localhost:3001/checkUser', {
-        login: login,
+      const response = await axios.post('http://localhost:3001/api/login', {
+        email: email,
         password: password,
       });
       setSeverity('success');
       setMessage('Вы удачно авторизованы');
       setOpen(true);
-      localStorage.setItem('user', login);
+      localStorage.setItem('token', response.data.accessToken);
+      localStorage.setItem('user', response.data.user.email);
       onResetFilters();
     } catch (e) {
       setSeverity('error');
-      setMessage('Вы ввели неверный логин или пароль');
+      setMessage(e.response.data.message);
       setOpen(true);
     }
   };
 
   const onClickSignInBtn = e => {
-    if (login === '' || password === '') {
+    if (email === '' || password === '') {
       setMessage('Заполните все поля!');
       setOpen(true);
     } else if (login.length < 6) {
       setMessage('Минимальное колличество символов для Login = 6');
       setOpen(true);
-    } else if (!/(?=.*[0-9])(?=.*[A-Za-z]){5,}/.test(password)) {
-      setMessage(
-        'Введите в поле password не менее 6 латинских символов, минимум 1 из которых является числом'
-      );
+    } else if (
+      !/^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email
+      )
+    ) {
+      setMessage('Введите корректный email, по типу example@mail.com');
       setOpen(true);
     } else {
       signInCheck();
@@ -93,48 +98,50 @@ const Autorization = () => {
   return (
     <section className={clsx(cn.registration, 'bg-black-100 h-full')}>
       <div className="container mx-auto px-4 text-white">
-        <div className={clsx(cn.registration__form, 'bg-white p-16')}>
-          <CommonTitle color="text-black-100">{t.loginTitle}</CommonTitle>
-          <form onSubmit={handleSubmit}>
-            <label className="font-inter text-black-100 text-2xl inline-block" htmlFor="login">
-              {t.loginLogin}
-            </label>
-            <input
-              type="text"
-              id="login"
-              placeholder="Login"
-              value={login}
-              onChange={e => setLogin(e.target.value)}
-            />
-
-            <label className="font-inter text-black-100 text-2xl" htmlFor="password">
-              {t.loginPassword}
-            </label>
-            <div className={clsx(cn.password_block, 'password_block')}>
+        <ScrollAnimation animateIn="fadeInUp" offset={50} animateOnce={true} duration={1}>
+          <div className={clsx(cn.registration__form, 'bg-white p-16')}>
+            <CommonTitle color="text-black-100">{t.loginTitle}</CommonTitle>
+            <form onSubmit={handleSubmit}>
+              <label className="font-inter text-black-100 text-2xl inline-block" htmlFor="login">
+                {t.loginLogin}
+              </label>
               <input
-                type="password"
-                id="password"
-                placeholder="Password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
+                type="text"
+                id="login"
+                placeholder="Email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
               />
-              <img
-                src="/img/registration/view.svg"
-                alt="view"
-                className={clsx(cn.password_control, 'password_control')}
-                id="password_control"
-                onClick={() => showHidePassword()}
-              />
-            </div>
 
-            <div className={clsx(cn.send_block, '')}>
-              <button onClick={e => onClickSignInBtn(e)}>{t.loginButton}</button>
-              <Link href="/registration">
-                <span className="text-black-100 cursor-pointer">{t.loginRegistration}</span>
-              </Link>
-            </div>
-          </form>
-        </div>
+              <label className="font-inter text-black-100 text-2xl" htmlFor="password">
+                {t.loginPassword}
+              </label>
+              <div className={clsx(cn.password_block, 'password_block')}>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                />
+                <img
+                  src="/img/registration/invisible.svg"
+                  alt="view"
+                  className={clsx(cn.password_control, 'password_control')}
+                  id="password_control"
+                  onClick={() => showHidePassword()}
+                />
+              </div>
+
+              <div className={clsx(cn.send_block, '')}>
+                <button onClick={e => onClickSignInBtn(e)}>{t.loginButton}</button>
+                <Link href="/registration">
+                  <span className="text-black-100 cursor-pointer">{t.loginRegistration}</span>
+                </Link>
+              </div>
+            </form>
+          </div>
+        </ScrollAnimation>
       </div>
 
       <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>

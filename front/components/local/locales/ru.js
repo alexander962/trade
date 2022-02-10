@@ -41,14 +41,14 @@ export const ru = {
   footerSub: '© 2018 - 2021 WhiteBIT.com Все права защищены.',
 
   registrationTitle: 'Регистрация',
-  registrationLogin: 'Логин:',
+  registrationLogin: 'Почта:',
   registrationLogIn: 'Авторизоваться',
   registrationPassword: 'Пароль:',
   registrationRepeatPassword: 'Повторите пароль:',
   registrationButton: 'Зарегестрироваться',
 
   loginTitle: 'Авторизация',
-  loginLogin: 'Логин:',
+  loginLogin: 'Почта:',
   loginPassword: 'Пароль:',
   loginButton: 'Авторизация',
   loginRegistration: 'Регистрация',

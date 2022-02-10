@@ -10,11 +10,7 @@ import Statistic from './Statistic';
 import Tools from './Tools';
 import Start from './Start';
 
-interface Props {
-  user: string;
-}
-
-const Main: FC<Props> = ({ user }) => (
+const Main = ({ user }) => (
   <section className={clsx(cn.main)}>
     <Promo user={user} />
     <Statistic />
