@@ -1,50 +1,15 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import React, { FC, useLayoutEffect, useState } from 'react';
-import ScrollAnimation from 'react-animate-on-scroll';
 import Slider from 'react-slick';
+import { useWindowSize } from '../../../../hooks/useWindowSize';
 
 import CommonSmallText from '../../../common-components/common-small-text';
 import CommonTitle from '../../../common-components/common-title';
 import { en } from '../../../local/locales/en';
 import { ru } from '../../../local/locales/ru';
 import cn from './style.module.sass';
-
-interface IScroll {
-  children: any;
-}
-
-type obj = {
-  id: number;
-  date: string;
-  header: string;
-  text: string;
-};
-
-const useWindowSize = () => {
-  React.useLayoutEffect = React.useEffect;
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-};
-
-const Reveal: FC<IScroll> = ({ children }) => (
-  <ScrollAnimation
-    animateIn="fadeIn"
-    animateOut="fadeOut"
-    duration={1}
-    // offset={400}
-  >
-    {children}
-  </ScrollAnimation>
-);
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const Feedback = () => {
   const [width, height] = useWindowSize();
@@ -65,12 +30,27 @@ const Feedback = () => {
   return (
     <section className={clsx(cn.feedback, 'md:pt-72px md:pb-64px pt-56px pb-64px')}>
       <div className="container mx-auto px-4">
-        <CommonTitle properties="text-center">{t.feedbackTitle}</CommonTitle>
-
+        <ScrollAnimation
+          animateIn="fadeIn"
+          offset={100}
+          animateOnce={true}
+          delay={200}
+          duration={1.5}
+        >
+          <CommonTitle properties="text-center">{t.feedbackTitle}</CommonTitle>
+        </ScrollAnimation>
         {width > 1024 ? (
           <div className={clsx(cn.feedback__blocks)}>
             {obj.map(({ id, date, header, text }, index) => (
-              <div key={`assets+${id}`} className={clsx(cn.feedback__block_external)}>
+              <ScrollAnimation
+                animateIn="flipInY"
+                offset={100}
+                animateOnce={true}
+                delay={5}
+                duration={1.5}
+                className={clsx(cn.feedback__block_external)}
+                key={`assets+${id}`}
+              >
                 <div className={clsx(cn.feedback__block_inner)}>
                   <img src="/img/feedback/feedback-icon.svg" alt="icon" className="mr-20px" />
                   <div className="font-inter text-15px text-gray-200 leading-21px mt-14px">
@@ -81,7 +61,7 @@ const Feedback = () => {
                   </CommonSmallText>
                   <CommonSmallText properties="mt-1">{text}</CommonSmallText>
                 </div>
-              </div>
+              </ScrollAnimation>
             ))}
           </div>
         ) : (

@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import React, { useEffect, useState } from 'react';
 
 import Footer from '../components/layout/Footer';
@@ -7,7 +6,7 @@ import Main from '../components/layout/Main';
 import cn from '../styles/Home.module.css';
 import 'animate.css/animate.compat.css';
 
-const Home: NextPage = () => {
+const Home = () => {
   const [user, setUser] = useState('');
 
   useEffect(() => {

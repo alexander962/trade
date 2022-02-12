@@ -57,7 +57,7 @@ const Promo = ({ user }) => {
         <div className={clsx(cn.promo__block_right)}>
           <ScrollAnimation
             delay={0}
-            animateIn="fadeInUp"
+            animateIn="animate__heartBeat"
             offset={0}
             animateOnce={true}
             duration={1}

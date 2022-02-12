@@ -51,4 +51,6 @@ export const en = {
   loginPassword: 'Password:',
   loginButton: 'Login',
   loginRegistration: 'Register',
+
+  comeBack:  'Come back'
 };

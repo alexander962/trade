@@ -11,20 +11,7 @@ import { en } from '../../local/locales/en';
 import { ru } from '../../local/locales/ru';
 import cn from './style.module.sass';
 import axios from 'axios';
-
-const useWindowSize = () => {
-  React.useLayoutEffect = React.useEffect;
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-};
+import { useWindowSize } from '../../../hooks/useWindowSize';
 
 const Header = ({ user, setUser }) => {
   const [width, height] = useWindowSize();
@@ -44,7 +31,7 @@ const Header = ({ user, setUser }) => {
 
   return (
     <header className={clsx(cn.header, 'bg-black-300')}>
-      <ScrollAnimation animateIn="fadeInUp" offset={50} animateOnce={true} duration={1}>
+      <ScrollAnimation animateIn="fadeInDown" offset={50} animateOnce={true} duration={0.5}>
         <div className="flex justify-between items-center container mx-auto px-4">
           <div className={clsx(cn.header__logo)}>
             <img src="/img/header/logo.png" alt="logo" />

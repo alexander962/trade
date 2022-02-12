@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React, { FC, useLayoutEffect, useState } from 'react';
+import React, { FC, useEffect, useLayoutEffect, useState } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
+import 'animate.css/animate.compat.css';
 import Slider from 'react-slick';
 
 import Button from '../../../Button';
@@ -10,22 +11,11 @@ import CommonTitle from '../../../common-components/common-title';
 import { en } from '../../../local/locales/en';
 import { ru } from '../../../local/locales/ru';
 import cn from './style.module.sass';
+import { useWindowSize } from '../../../../hooks/useWindowSize';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-const useWindowSize = () => {
-  React.useLayoutEffect = React.useEffect;
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-};
-
-const Reveal = ({ children }) => (
+/* const Reveal = ({ children }) => (
   <ScrollAnimation
     animateIn="fadeIn"
     animateOut="fadeOut"
@@ -34,7 +24,7 @@ const Reveal = ({ children }) => (
   >
     {children}
   </ScrollAnimation>
-);
+); */
 
 const Tools = ({ user }) => {
   const [width, height] = useWindowSize();
@@ -49,20 +39,41 @@ const Tools = ({ user }) => {
     slidesToScroll: 1,
   };
 
+  useEffect(() => {
+    AOS.init({
+      // duration : 5000
+    });
+  }, []);
+
   const router = useRouter();
   const t = router.locale === 'en' ? en : ru;
 
   return (
     <section className={clsx(cn.tools, 'bg-black-100 pt-56px relative')}>
       <div className="container mx-auto px-4">
-        <CommonTitle properties="text-center" color="text-white">
-          {t.toolsTitle}
-        </CommonTitle>
-        <CommonSmallText properties="text-center mt-6">{t.toolsSubTitle}</CommonSmallText>
+        <ScrollAnimation
+          animateIn="fadeIn"
+          offset={100}
+          animateOnce={true}
+          delay={200}
+          duration={1.5}
+        >
+          <CommonTitle properties="text-center" color="text-white">
+            {t.toolsTitle}
+          </CommonTitle>
+          <CommonSmallText properties="text-center mt-6">{t.toolsSubTitle}</CommonSmallText>
+        </ScrollAnimation>
 
         {width > 1024 ? (
           <div className={clsx(cn.tools__main, 'flex justify-between')}>
-            <div className={clsx(cn.tools__block_external)}>
+            <ScrollAnimation
+              animateIn="flip"
+              offset={100}
+              animateOnce={true}
+              delay={5}
+              duration={1.5}
+              className={clsx(cn.tools__block_external)}
+            >
               <div className={clsx(cn.tools__block_inner, 'text-center')}>
                 <CommonSmallText color="text-white" properties="mb-36px">
                   {t.toolsText1}
@@ -71,9 +82,16 @@ const Tools = ({ user }) => {
                   <img src="/img/tools/tools-img-1.png" alt="img" />
                 </div>
               </div>
-            </div>
+            </ScrollAnimation>
 
-            <div className={clsx(cn.tools__block_external)}>
+            <ScrollAnimation
+              animateIn="flip"
+              offset={100}
+              animateOnce={true}
+              delay={5}
+              duration={1.5}
+              className={clsx(cn.tools__block_external)}
+            >
               <div className={clsx(cn.tools__block_inner, 'text-center')}>
                 <CommonSmallText color="text-white" properties="mb-36px">
                   {t.toolsText2}
@@ -82,9 +100,16 @@ const Tools = ({ user }) => {
                   <img src="/img/tools/tools-img-2.png" alt="img" />
                 </div>
               </div>
-            </div>
+            </ScrollAnimation>
 
-            <div className={clsx(cn.tools__block_external)}>
+            <ScrollAnimation
+              animateIn="flip"
+              offset={100}
+              animateOnce={true}
+              delay={5}
+              duration={1.5}
+              className={clsx(cn.tools__block_external)}
+            >
               <div className={clsx(cn.tools__block_inner, 'text-center')}>
                 <CommonSmallText color="text-white" properties="mb-36px">
                   {t.toolsText3}
@@ -93,11 +118,18 @@ const Tools = ({ user }) => {
                   <img src="/img/tools/tools-img-3.png" alt="img" />
                 </div>
               </div>
-            </div>
+            </ScrollAnimation>
           </div>
         ) : (
           <Slider {...settings} className="md:mt-102px mt-40px">
-            <div className={clsx(cn.tools__block_external)}>
+            <ScrollAnimation
+              animateIn="flip"
+              offset={100}
+              animateOnce={true}
+              delay={5}
+              duration={1.5}
+              className={clsx(cn.tools__block_external)}
+            >
               <div className={clsx(cn.tools__block_inner, 'text-center')}>
                 <CommonSmallText color="text-white" properties="mb-36px">
                   {t.toolsText1}
@@ -106,9 +138,16 @@ const Tools = ({ user }) => {
                   <img src="/img/tools/tools-img-1.png" alt="img" />
                 </div>
               </div>
-            </div>
+            </ScrollAnimation>
 
-            <div className={clsx(cn.tools__block_external)}>
+            <ScrollAnimation
+              animateIn="flip"
+              offset={100}
+              animateOnce={true}
+              delay={5}
+              duration={1.5}
+              className={clsx(cn.tools__block_external)}
+            >
               <div className={clsx(cn.tools__block_inner, 'text-center')}>
                 <CommonSmallText color="text-white" properties="mb-36px">
                   {t.toolsText2}
@@ -117,9 +156,16 @@ const Tools = ({ user }) => {
                   <img src="/img/tools/tools-img-2.png" alt="img" />
                 </div>
               </div>
-            </div>
+            </ScrollAnimation>
 
-            <div className={clsx(cn.tools__block_external)}>
+            <ScrollAnimation
+              animateIn="flip"
+              offset={100}
+              animateOnce={true}
+              delay={5}
+              duration={1.5}
+              className={clsx(cn.tools__block_external)}
+            >
               <div className={clsx(cn.tools__block_inner, 'text-center')}>
                 <CommonSmallText color="text-white" properties="mb-36px">
                   {t.toolsText3}
@@ -128,7 +174,7 @@ const Tools = ({ user }) => {
                   <img src="/img/tools/tools-img-3.png" alt="img" />
                 </div>
               </div>
-            </div>
+            </ScrollAnimation>
           </Slider>
         )}
 

@@ -11,7 +11,7 @@ const Footer = () => {
   const t = router.locale === 'en' ? en : ru;
 
   return (
-    <footer className={clsx(cn.footer, 'bg-black-100 animate__backInDown')}>
+    <footer className={clsx(cn.footer, 'bg-black-100')}>
       <div className="container mx-auto px-4 font-inter text-gray-100">
         <div className={clsx(cn.footer__main, 'flex item-center')}>
           <div className={clsx(cn.footer__external)}>

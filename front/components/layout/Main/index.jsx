@@ -9,6 +9,8 @@ import Promo from './Promo';
 import Statistic from './Statistic';
 import Tools from './Tools';
 import Start from './Start';
+import ScrollAnimation from 'react-animate-on-scroll';
+import 'animate.css/animate.compat.css';
 
 const Main = ({ user }) => (
   <section className={clsx(cn.main)}>

@@ -138,6 +138,9 @@ const Autorization = () => {
                 <Link href="/registration">
                   <span className="text-black-100 cursor-pointer">{t.loginRegistration}</span>
                 </Link>
+                <Link href="/">
+                  <span className="text-black-100 cursor-pointer mt-20px">{t.comeBack}</span>
+                </Link>
               </div>
             </form>
           </div>

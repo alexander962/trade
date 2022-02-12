@@ -9,11 +9,7 @@ import { en } from '../../../local/locales/en';
 import { ru } from '../../../local/locales/ru';
 import cn from './style.module.sass';
 
-interface IScroll {
-  children: any;
-}
-
-const Reveal: FC<IScroll> = ({ children }) => (
+/* const Reveal = ({ children }) => (
   <ScrollAnimation
     animateIn="fadeIn"
     animateOut="fadeOut"
@@ -22,13 +18,9 @@ const Reveal: FC<IScroll> = ({ children }) => (
   >
     {children}
   </ScrollAnimation>
-);
+); */
 
-interface Props {
-  user: string;
-}
-
-const Start: FC<Props> = ({ user }) => {
+const Start = ({ user }) => {
   const router = useRouter();
   const t = router.locale === 'en' ? en : ru;
 
@@ -36,9 +28,17 @@ const Start: FC<Props> = ({ user }) => {
     <section
       className={clsx(cn.start, 'bg-black-300 md:pt-72px md:pb-56px pt-56px pb-64px text-center')}
     >
-      <CommonTitle color="text-white" properties="text-center">
-        {t.startTitle}
-      </CommonTitle>
+      <ScrollAnimation
+        animateIn="fadeIn"
+        offset={100}
+        animateOnce={true}
+        delay={200}
+        duration={1.5}
+      >
+        <CommonTitle color="text-white" properties="text-center">
+          {t.startTitle}
+        </CommonTitle>
+      </ScrollAnimation>
       <div className="container mx-auto px-4">
         <div
           className={clsx(
@@ -46,7 +46,14 @@ const Start: FC<Props> = ({ user }) => {
             'flex lg:align-top lg:justify-between lg:flex-row flex-col'
           )}
         >
-          <div className={clsx(cn.start__block_external)}>
+          <ScrollAnimation
+            animateIn="zoomIn"
+            offset={100}
+            animateOnce={true}
+            delay={5}
+            duration={1.5}
+            className={clsx(cn.start__block_external)}
+          >
             <div className={clsx(cn.start__block_inner, 'mb-34px text-center')}>
               <div className="mb-34px">
                 <img
@@ -57,7 +64,7 @@ const Start: FC<Props> = ({ user }) => {
               </div>
               <div className="font-inter text-22px leading-30px text-white">{t.startText1}</div>
             </div>
-          </div>
+          </ScrollAnimation>
 
           <div className={clsx(cn.start__img_external)}>
             <div className={clsx(cn.start__img_inner)}>
@@ -65,7 +72,14 @@ const Start: FC<Props> = ({ user }) => {
             </div>
           </div>
 
-          <div className={clsx(cn.start__block_external)}>
+          <ScrollAnimation
+            animateIn="zoomIn"
+            offset={100}
+            animateOnce={true}
+            delay={150}
+            duration={1.5}
+            className={clsx(cn.start__block_external)}
+          >
             <div className={clsx(cn.start__block_inner, 'mb-34px text-center')}>
               <div className="mb-34px">
                 <img
@@ -76,7 +90,7 @@ const Start: FC<Props> = ({ user }) => {
               </div>
               <div className="font-inter text-22px leading-30px text-white">{t.startText2}</div>
             </div>
-          </div>
+          </ScrollAnimation>
 
           <div className={clsx(cn.start__img_external)}>
             <div className={clsx(cn.start__img_inner)}>
@@ -84,7 +98,14 @@ const Start: FC<Props> = ({ user }) => {
             </div>
           </div>
 
-          <div className={clsx(cn.start__block_external)}>
+          <ScrollAnimation
+            animateIn="zoomIn"
+            offset={100}
+            animateOnce={true}
+            delay={300}
+            duration={1.5}
+            className={clsx(cn.start__block_external)}
+          >
             <div className={clsx(cn.start__block_inner, 'text-center')}>
               <div className="mb-34px">
                 <img
@@ -95,7 +116,7 @@ const Start: FC<Props> = ({ user }) => {
               </div>
               <div className="font-inter text-22px leading-30px text-white">{t.startText3}</div>
             </div>
-          </div>
+          </ScrollAnimation>
         </div>
       </div>
       {!user && <Button properties="text-center mx-auto">{t.startButton}</Button>}

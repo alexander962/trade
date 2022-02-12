@@ -9,17 +9,7 @@ import { en } from '../../../local/locales/en';
 import { ru } from '../../../local/locales/ru';
 import cn from './style.module.sass';
 
-interface IScroll {
-  children: any;
-}
-
-type obj = {
-  id: number;
-  title: string;
-  date: string;
-};
-
-const Reveal: FC<IScroll> = ({ children }) => (
+/* const Reveal: FC<IScroll> = ({ children }) => (
   <ScrollAnimation
     animateIn="fadeIn"
     animateOut="fadeOut"
@@ -28,7 +18,7 @@ const Reveal: FC<IScroll> = ({ children }) => (
   >
     {children}
   </ScrollAnimation>
-);
+); */
 
 const Assets = () => {
   const router = useRouter();
@@ -37,17 +27,33 @@ const Assets = () => {
   return (
     <section className={clsx(cn.assets, 'md:pt-72px md:pb-112px pt-56px pb-80px')}>
       <div className="container mx-auto px-4">
-        <CommonTitle properties="text-center">{t.assetsTitle}</CommonTitle>
-        <CommonSmallText properties="mt-24px text-center">{t.assetsSubTitle}</CommonSmallText>
+        <ScrollAnimation
+          animateIn="fadeIn"
+          offset={100}
+          animateOnce={true}
+          delay={200}
+          duration={1.5}
+        >
+          <CommonTitle properties="text-center">{t.assetsTitle}</CommonTitle>
+          <CommonSmallText properties="mt-24px text-center">{t.assetsSubTitle}</CommonSmallText>
+        </ScrollAnimation>
 
         <div className={clsx(cn.assets__blocks)}>
           {obj.map(({ id, icon, text }, index) => (
-            <div key={`assets+${id}`} className={clsx(cn.assets__block_external)}>
+            <ScrollAnimation
+              animateIn="flipInX"
+              offset={100}
+              animateOnce={true}
+              delay={150}
+              duration={1.5}
+              className={clsx(cn.assets__block_external)}
+              key={`assets+${id}`}
+            >
               <div className={clsx(cn.assets__block_inner)}>
                 <img src={icon} alt="icon" className="mr-20px" />
                 <span>{text}</span>
               </div>
-            </div>
+            </ScrollAnimation>
           ))}
         </div>
       </div>
