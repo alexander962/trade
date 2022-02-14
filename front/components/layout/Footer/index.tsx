@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import { en } from '../../local/locales/en';
-import { ru } from '../../local/locales/ru';
+import { en } from '../../../locales/en';
+import { ru } from '../../../locales/ru';
 import cn from './style.module.sass';
 
 const Footer = () => {

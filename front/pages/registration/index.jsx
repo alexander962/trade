@@ -6,8 +6,8 @@ import { useRouter } from 'next/router';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
-import { en } from '../../components/local/locales/en';
-import { ru } from '../../components/local/locales/ru';
+import { en } from '../../locales/en';
+import { ru } from '../../locales/ru';
 import ScrollAnimation from 'react-animate-on-scroll';
 import 'animate.css/animate.compat.css';
 
@@ -26,6 +26,10 @@ const Registration = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [severity, setSeverity] = useState('error');
+  const errors = [];
+  let validEmail = false;
+  let validPassword = false;
+  let validRepeatPassword = false;
   const router = useRouter();
   const t = router.locale === 'en' ? en : ru;
 
@@ -57,32 +61,45 @@ const Registration = () => {
       localStorage.setItem('user', response.data.user.email);
       onResetFilters();
     } catch (e) {
-      setSeverity('error');
-      setMessage('Ошибка сервера');
+      setMessage('Пользователь с таким email уже существует');
       setOpen(true);
-      // console.log('Это моя ошибка ' + e.process.data.message);
     }
   };
 
   const onClickRegisterBtn = e => {
-    console.log('I am here!!!');
     if (email === '' || password === '' || repeatPassword === '') {
+      errors.push('Заполните все поля! ');
       setMessage('Заполните все поля!');
       setOpen(true);
-    } else if (login.length < 6) {
-      setMessage('Минимальное колличество символов для Login = 6');
-      setOpen(true);
-    } else if (
+    }
+    if (
       !/^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email
       )
     ) {
-      setMessage('Введите корректный email, по типу example@mail.com');
-      setOpen(true);
-    } else if (password !== repeatPassword) {
-      setMessage('Пароли не совпадают!');
+      errors.push(`Введите корректный email, например: example@gmail.com! `);
+      setMessage(errors);
       setOpen(true);
     } else {
+      validEmail = true;
+    }
+    if (!/(?=.*[0-9])(?=.*[A-Za-z]){5,}/.test(password)) {
+      errors.push(
+        'Введите в поле password не менее 6 латинских символов, минимум 1 из которых является числом! '
+      );
+      setMessage(errors);
+      setOpen(true);
+    } else {
+      validPassword = true;
+    }
+    if (password !== repeatPassword) {
+      errors.push('Пароли не совпадают!');
+      setMessage(errors);
+      setOpen(true);
+    } else {
+      validRepeatPassword = true;
+    }
+    if (validEmail && validPassword && validRepeatPassword) {
       addNewUser();
       setEmail('');
       setPassword('');

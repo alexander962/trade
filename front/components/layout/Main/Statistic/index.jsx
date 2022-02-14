@@ -6,8 +6,8 @@ import React, { FC } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 import CommonSmallText from '../../../common-components/common-small-text';
-import { en } from '../../../local/locales/en';
-import { ru } from '../../../local/locales/ru';
+import { en } from '../../../../locales/en';
+import { ru } from '../../../../locales/ru';
 import cn from './style.module.sass';
 
 /* const Reveal: FC<IScroll> = ({ children }) => (

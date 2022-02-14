@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React, { FC } from 'react';
+import React from 'react';
 
 import CommonSmallText from '../../../common-components/common-small-text';
 import CommonTitle from '../../../common-components/common-title';
-import { en } from '../../../local/locales/en';
-import { ru } from '../../../local/locales/ru';
+import { en } from '../../../../locales/en';
+import { ru } from '../../../../locales/ru';
 import cn from './style.module.sass';
 import ScrollAnimation from 'react-animate-on-scroll';
 import 'animate.css/animate.min.css';

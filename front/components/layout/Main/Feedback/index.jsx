@@ -6,8 +6,8 @@ import { useWindowSize } from '../../../../hooks/useWindowSize';
 
 import CommonSmallText from '../../../common-components/common-small-text';
 import CommonTitle from '../../../common-components/common-title';
-import { en } from '../../../local/locales/en';
-import { ru } from '../../../local/locales/ru';
+import { en } from '../../../../locales/en';
+import { ru } from '../../../../locales/ru';
 import cn from './style.module.sass';
 import ScrollAnimation from 'react-animate-on-scroll';
 

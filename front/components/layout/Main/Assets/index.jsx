@@ -1,24 +1,13 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React, { FC } from 'react';
+import React from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 import CommonSmallText from '../../../common-components/common-small-text';
 import CommonTitle from '../../../common-components/common-title';
-import { en } from '../../../local/locales/en';
-import { ru } from '../../../local/locales/ru';
+import { en } from '../../../../locales/en';
+import { ru } from '../../../../locales/ru';
 import cn from './style.module.sass';
-
-/* const Reveal: FC<IScroll> = ({ children }) => (
-  <ScrollAnimation
-    animateIn="fadeIn"
-    animateOut="fadeOut"
-    duration={1}
-    // offset={400}
-  >
-    {children}
-  </ScrollAnimation>
-); */
 
 const Assets = () => {
   const router = useRouter();

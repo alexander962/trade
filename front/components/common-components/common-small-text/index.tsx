@@ -14,7 +14,7 @@ const CommonSmallText: FC<ISmallTextProps> = ({
   properties = '',
   color = 'text-gray-100',
 }) => (
-  <div className={clsx(cn.small_text, `${color} + text-base font-inter + ${properties}`)}>
+  <div className={clsx(cn.small_text, `${color} text-base font-inter ${properties}`)}>
     {children}
   </div>
 );

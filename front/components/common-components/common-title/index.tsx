@@ -17,7 +17,7 @@ const CommonTitle: FC<ISmallTextProps> = ({
   <div
     className={clsx(
       cn.title,
-      `${color} md:text-42px text-32px leading-46px font-gilroy + ${properties}`
+      `${color} md:text-42px text-32px leading-46px font-gilroy ${properties}`
     )}
   >
     {children}
