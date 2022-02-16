@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React, { FC, useState } from 'react';
+import React from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 import Button from '../../../Button';
@@ -57,7 +57,7 @@ const Promo = ({ user }) => {
         <div className={clsx(cn.promo__block_right)}>
           <ScrollAnimation
             delay={0}
-            animateIn="animate__heartBeat"
+            animateIn="heartBeat"
             offset={0}
             animateOnce={true}
             duration={1}

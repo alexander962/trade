@@ -1,10 +1,7 @@
-import 'animate.css';
-
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import 'animate.css/animate.compat.css';
 
 import { en } from '../../../locales/en';
 import { ru } from '../../../locales/ru';
@@ -19,7 +16,7 @@ const Header = ({ user, setUser }) => {
 
   const logOut = async () => {
     try {
-      await axios.post('http://localhost:3001/api/logout');
+      await axios.post(process.env.NEXT_PUBLIC_API_URL + '/api/logout');
       localStorage.removeItem('user');
       localStorage.removeItem('token');
       setUser('');

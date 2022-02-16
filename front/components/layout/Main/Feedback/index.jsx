@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React, { FC, useLayoutEffect, useState } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import { useWindowSize } from '../../../../hooks/useWindowSize';
 

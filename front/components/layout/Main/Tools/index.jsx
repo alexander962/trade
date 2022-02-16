@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React, { FC, useEffect, useLayoutEffect, useState } from 'react';
+import React from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 import 'animate.css/animate.compat.css';
 import Slider from 'react-slick';
@@ -12,19 +12,6 @@ import { en } from '../../../../locales/en';
 import { ru } from '../../../../locales/ru';
 import cn from './style.module.sass';
 import { useWindowSize } from '../../../../hooks/useWindowSize';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
-/* const Reveal = ({ children }) => (
-  <ScrollAnimation
-    animateIn="fadeIn"
-    animateOut="fadeOut"
-    duration={1}
-    // offset={400}
-  >
-    {children}
-  </ScrollAnimation>
-); */
 
 const Tools = ({ user }) => {
   const [width, height] = useWindowSize();
@@ -38,12 +25,6 @@ const Tools = ({ user }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-
-  useEffect(() => {
-    AOS.init({
-      // duration : 5000
-    });
-  }, []);
 
   const router = useRouter();
   const t = router.locale === 'en' ? en : ru;

@@ -4,7 +4,6 @@ import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import Main from '../components/layout/Main';
 import cn from '../styles/Home.module.css';
-import 'animate.css/animate.compat.css';
 
 const Home = () => {
   const [user, setUser] = useState('');

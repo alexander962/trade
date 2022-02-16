@@ -12,7 +12,6 @@ import Link from 'next/link';
 import { en } from '../../locales/en';
 import { ru } from '../../locales/ru';
 import ScrollAnimation from 'react-animate-on-scroll';
-import 'animate.css/animate.compat.css';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;

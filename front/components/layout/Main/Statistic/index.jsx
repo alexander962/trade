@@ -1,8 +1,6 @@
-import 'animate.css/animate.min.css';
-
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React, { FC } from 'react';
+import React from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 import CommonSmallText from '../../../common-components/common-small-text';
@@ -10,18 +8,12 @@ import { en } from '../../../../locales/en';
 import { ru } from '../../../../locales/ru';
 import cn from './style.module.sass';
 
-/* const Reveal: FC<IScroll> = ({ children }) => (
-  <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut" offset={100} delay={100} duration={1}>
-    {children}
-  </ScrollAnimation>
-); */
-
 const Statistic = () => {
   const router = useRouter();
   const t = router.locale === 'en' ? en : ru;
 
   return (
-    <section className={clsx(cn.statistic, 'bg-black-300 md:py-80px py-64px')}>
+    <div className={clsx(cn.statistic, 'bg-black-300 md:py-80px py-64px')}>
       <div className="container mx-auto px-74px lg:flex lg:align-top lg:justify-between">
         <ScrollAnimation
           animateIn="slideInLeft"
@@ -79,7 +71,7 @@ const Statistic = () => {
           <CommonSmallText properties="mt-6">{t.statisticSecurity}</CommonSmallText>
         </ScrollAnimation>
       </div>
-    </section>
+    </div>
   );
 };
 

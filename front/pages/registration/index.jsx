@@ -9,7 +9,6 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { en } from '../../locales/en';
 import { ru } from '../../locales/ru';
 import ScrollAnimation from 'react-animate-on-scroll';
-import 'animate.css/animate.compat.css';
 
 import CommonTitle from '../../components/common-components/common-title';
 import cn from './style.module.sass';

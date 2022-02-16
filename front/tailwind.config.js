@@ -1,5 +1,8 @@
 module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  experimental: {
+    optimizeUniversalDefaults: true,
+  },
   theme: {
     fontFamily: {
       inter: ['Inter'],

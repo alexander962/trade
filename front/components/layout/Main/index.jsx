@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC } from 'react';
+import React from 'react';
 
 import cn from '../../../styles/Home.module.css';
 import Advantage from './Advantage';
@@ -9,11 +9,9 @@ import Promo from './Promo';
 import Statistic from './Statistic';
 import Tools from './Tools';
 import Start from './Start';
-import ScrollAnimation from 'react-animate-on-scroll';
-import 'animate.css/animate.compat.css';
 
 const Main = ({ user }) => (
-  <section className={clsx(cn.main)}>
+  <div className={clsx(cn.main)}>
     <Promo user={user} />
     <Statistic />
     <Assets />
@@ -21,7 +19,7 @@ const Main = ({ user }) => (
     <Tools user={user} />
     <Feedback />
     <Start user={user} />
-  </section>
+  </div>
 );
 
 export default Main;
