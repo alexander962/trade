@@ -23,7 +23,7 @@ const Statistic = () => {
           duration={1.5}
           className="flex flex-col items-center"
         >
-          <span className="font-gilroy font-bold text-white md:text-64px text-56px leading-36px">
+          <span className="font-gilroy font-bold text-white md:text-64px text-56px leading-100%">
             500K+
           </span>
           <CommonSmallText properties="mt-6">{t.statisticUsers}</CommonSmallText>
@@ -37,7 +37,7 @@ const Statistic = () => {
           duration={1.5}
           className="flex flex-col items-center lg:mt-0 mt-64px"
         >
-          <span className="font-gilroy font-bold text-white md:text-64px text-56px leading-36px">
+          <span className="font-gilroy font-bold text-white md:text-64px text-56px leading-100%">
             400+
           </span>
           <CommonSmallText properties="mt-6">{t.statisticTrading}</CommonSmallText>
@@ -51,7 +51,7 @@ const Statistic = () => {
           duration={1.5}
           className="flex flex-col items-center lg:mt-0 mt-64px"
         >
-          <span className="font-gilroy font-bold text-white md:text-64px text-56px leading-36px">
+          <span className="font-gilroy font-bold text-white md:text-64px text-56px leading-100%">
             190
           </span>
           <CommonSmallText properties="mt-6">{t.statisticCountries}</CommonSmallText>
@@ -65,7 +65,7 @@ const Statistic = () => {
           duration={1.5}
           className="flex flex-col items-center lg:mt-0 mt-64px"
         >
-          <span className="font-gilroy font-bold text-white md:text-64px text-56px leading-36px">
+          <span className="font-gilroy font-bold text-white md:text-64px text-56px leading-100%">
             10
           </span>
           <CommonSmallText properties="mt-6">{t.statisticSecurity}</CommonSmallText>

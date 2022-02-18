@@ -5,7 +5,7 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import 'animate.css/animate.compat.css';
 import Slider from 'react-slick';
 
-import Button from '../../../Button';
+import Button from '../../../forms/Button';
 import CommonSmallText from '../../../common-components/common-small-text';
 import CommonTitle from '../../../common-components/common-title';
 import { en } from '../../../../locales/en';
@@ -60,7 +60,7 @@ const Tools = ({ user }) => {
                   {t.toolsText1}
                 </CommonSmallText>
                 <div className={clsx(cn.tools__block_img)}>
-                  <img src="/img/tools/tools-img-1.png" alt="img" />
+                  <img src="/img/tools/tools-img-1.png" alt="" />
                 </div>
               </div>
             </ScrollAnimation>
@@ -78,7 +78,7 @@ const Tools = ({ user }) => {
                   {t.toolsText2}
                 </CommonSmallText>
                 <div className={clsx(cn.tools__block_img)}>
-                  <img src="/img/tools/tools-img-2.png" alt="img" />
+                  <img src="/img/tools/tools-img-2.png" alt="" />
                 </div>
               </div>
             </ScrollAnimation>
@@ -96,7 +96,7 @@ const Tools = ({ user }) => {
                   {t.toolsText3}
                 </CommonSmallText>
                 <div className={clsx(cn.tools__block_img)}>
-                  <img src="/img/tools/tools-img-3.png" alt="img" />
+                  <img src="/img/tools/tools-img-3.png" alt="" />
                 </div>
               </div>
             </ScrollAnimation>
@@ -116,7 +116,7 @@ const Tools = ({ user }) => {
                   {t.toolsText1}
                 </CommonSmallText>
                 <div className={clsx(cn.tools__block_img)}>
-                  <img src="/img/tools/tools-img-1.png" alt="img" />
+                  <img src="/img/tools/tools-img-1.png" alt="" />
                 </div>
               </div>
             </ScrollAnimation>
@@ -134,7 +134,7 @@ const Tools = ({ user }) => {
                   {t.toolsText2}
                 </CommonSmallText>
                 <div className={clsx(cn.tools__block_img)}>
-                  <img src="/img/tools/tools-img-2.png" alt="img" />
+                  <img src="/img/tools/tools-img-2.png" alt="" />
                 </div>
               </div>
             </ScrollAnimation>
@@ -152,7 +152,7 @@ const Tools = ({ user }) => {
                   {t.toolsText3}
                 </CommonSmallText>
                 <div className={clsx(cn.tools__block_img)}>
-                  <img src="/img/tools/tools-img-3.png" alt="img" />
+                  <img src="/img/tools/tools-img-3.png" alt="" />
                 </div>
               </div>
             </ScrollAnimation>

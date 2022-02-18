@@ -52,7 +52,7 @@ const Feedback = () => {
                 key={`assets+${id}`}
               >
                 <div className={clsx(cn.feedback__block_inner)}>
-                  <img src="/img/feedback/feedback-icon.svg" alt="icon" className="mr-20px" />
+                  <img src="/img/feedback/feedback-icon.svg" alt="" className="mr-20px" />
                   <div className="font-inter text-15px text-gray-200 leading-21px mt-14px">
                     {date}
                   </div>
@@ -69,7 +69,7 @@ const Feedback = () => {
             {obj.map(({ id, date, header, text }, index) => (
               <div key={`assets+${id}`} className={clsx(cn.feedback__block_external)}>
                 <div className={clsx(cn.feedback__block_inner)}>
-                  <img src="/img/feedback/feedback-icon.svg" alt="icon" className="mr-20px" />
+                  <img src="/img/feedback/feedback-icon.svg" alt="" className="mr-20px" />
                   <div className="font-inter text-15px text-gray-200 leading-21px mt-14px">
                     {date}
                   </div>

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
-import Button from '../../../Button';
+import Button from '../../../forms/Button';
 import CommonSmallText from '../../../common-components/common-small-text';
 import { en } from '../../../../locales/en';
 import { ru } from '../../../../locales/ru';
@@ -62,7 +62,7 @@ const Promo = ({ user }) => {
             animateOnce={true}
             duration={1}
           >
-            <img src="/img/promo/promo.png" alt="img" />
+            <img src="/img/promo/promo.png" alt="" />
           </ScrollAnimation>
         </div>
       </div>

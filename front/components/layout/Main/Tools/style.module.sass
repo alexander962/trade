@@ -1,6 +1,8 @@
 @import "styles/css/config"
 
 .tools
+  overflow: hidden
+
   &__main
     margin: 102px -16px 0 -16px
     z-index: 0
@@ -38,6 +40,16 @@
       background: linear-gradient(180deg, rgba(7, 7, 11, 0) 7.93%, #07070B 45%)
     +max-width($mobail)
       padding: 0 20px
-      button
-        width: 100%
-        margin-top: 230px
+
+
+    button
+      position: absolute
+      bottom: 80px
+      left: 50%
+      transform: translate(-50%, -50%)
+      +max-width($tablet)
+        bottom: 40px
+      +max-width($mobail)
+        width: calc(100% - 40px)
+
+

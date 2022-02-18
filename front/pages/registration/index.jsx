@@ -49,7 +49,7 @@ const Registration = () => {
 
   const addNewUser = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/registration', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/registration`, {
         email: email,
         password: password,
       });
@@ -164,7 +164,7 @@ const Registration = () => {
                 />
                 <img
                   src="/img/registration/invisible.svg"
-                  alt="view"
+                  alt=""
                   className={clsx(cn.password_control, 'password_control')}
                   id="password_control"
                   onClick={() => showHidePassword()}

@@ -16,7 +16,7 @@ const MainButton: FC<ISmallTextProps> = ({ children = '', properties = '' }) => 
         type="button"
         className={clsx(
           cn.btn_main,
-          `text-black-200 text-14px font-inter font-4 bg-yellow rounded-xl + ${properties}`
+          `text-black-200 text-14px font-inter font-4 bg-yellow rounded-xl ${properties}`
         )}
       >
         {children}

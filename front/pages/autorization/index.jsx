@@ -47,7 +47,7 @@ const Autorization = () => {
 
   const signInCheck = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/login', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
         email: email,
         password: password,
       });
@@ -139,7 +139,7 @@ const Autorization = () => {
                 />
                 <img
                   src="/img/registration/invisible.svg"
-                  alt="view"
+                  alt=""
                   className={clsx(cn.password_control, 'password_control')}
                   id="password_control"
                   onClick={() => showHidePassword()}

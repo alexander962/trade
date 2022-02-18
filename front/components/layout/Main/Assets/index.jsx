@@ -39,7 +39,7 @@ const Assets = () => {
               key={`assets+${id}`}
             >
               <div className={clsx(cn.assets__block_inner)}>
-                <img src={icon} alt="icon" className="mr-20px" />
+                <img src={icon} alt="" className="mr-20px" />
                 <span>{text}</span>
               </div>
             </ScrollAnimation>

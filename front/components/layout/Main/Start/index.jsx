@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
-import Button from '../../../Button';
+import Button from '../../../forms/Button';
 import CommonTitle from '../../../common-components/common-title';
 import { en } from '../../../../locales/en';
 import { ru } from '../../../../locales/ru';
@@ -45,11 +45,7 @@ const Start = ({ user }) => {
           >
             <div className={clsx(cn.start__block_inner, 'mb-34px text-center')}>
               <div className="mb-34px">
-                <img
-                  src="/img/start/start-img-1.png"
-                  alt="Start-img"
-                  className="max-w-97px h-101px"
-                />
+                <img src="/img/start/start-img-1.png" alt="" className="max-w-97px h-101px" />
               </div>
               <div className="font-inter text-22px leading-30px text-white">{t.startText1}</div>
             </div>
@@ -57,7 +53,7 @@ const Start = ({ user }) => {
 
           <div className={clsx(cn.start__img_external)}>
             <div className={clsx(cn.start__img_inner)}>
-              <img src="/img/start/start-img-4.svg" alt="Start-img" />
+              <img src="/img/start/start-img-4.svg" alt="" />
             </div>
           </div>
 
@@ -71,11 +67,7 @@ const Start = ({ user }) => {
           >
             <div className={clsx(cn.start__block_inner, 'mb-34px text-center')}>
               <div className="mb-34px">
-                <img
-                  src="/img/start/start-img-2.png"
-                  alt="Start-img"
-                  className="max-w-97px h-101px"
-                />
+                <img src="/img/start/start-img-2.png" alt="" className="max-w-97px h-101px" />
               </div>
               <div className="font-inter text-22px leading-30px text-white">{t.startText2}</div>
             </div>
@@ -83,7 +75,7 @@ const Start = ({ user }) => {
 
           <div className={clsx(cn.start__img_external)}>
             <div className={clsx(cn.start__img_inner)}>
-              <img src="/img/start/start-img-4.svg" alt="Start-img" />
+              <img src="/img/start/start-img-4.svg" alt="" />
             </div>
           </div>
 
@@ -97,7 +89,7 @@ const Start = ({ user }) => {
           >
             <div className={clsx(cn.start__block_inner, 'text-center')}>
               <div className="mb-34px">
-                <img src="/img/start/start-img-3.png" alt="Start-img" className="h-101px" />
+                <img src="/img/start/start-img-3.png" alt="" className="h-101px" />
               </div>
               <div className="font-inter text-22px leading-30px text-white">{t.startText3}</div>
             </div>

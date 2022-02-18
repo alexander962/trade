@@ -1,34 +1,50 @@
 @font-face {
   font-family: 'Inter';
+  src: url('/fonts/Inter/Inter-Regular.eot');
+  src: url('/fonts/Inter/Inter-Regular.eot?#iefix') format('embedded-opentype');
+  src: url('/fonts/Inter/Inter-Regular.woff2') format('woff2');
+  src: url('/fonts/Inter/Inter-Regular.woff') format('woff');
+  src: url("/fonts/Inter/Inter-Regular.ttf") format("opentype");
   font-style: normal;
   font-weight: normal;
-  src: url("/fonts/Inter/Inter-Regular.ttf") format("opentype");
   font-display: swap;
 }
 
 
 @font-face {
   font-family: 'Inter';
-  font-style: normal;
-  font-weight: bold;
+  src: url('/fonts/Inter/Inter-Bold.eot');
+  src: url('/fonts/Inter/Inter-Bold.eot?#iefix') format('embedded-opentype');
+  src: url('/fonts/Inter/Inter-Bold.woff2') format('woff2');
+  src: url('/fonts/Inter/Inter-Bold.woff') format('woff');
   src: url("/fonts/Inter/Inter-Bold.ttf") format("opentype");
-  font-display: swap;
-}
-
-
-@font-face {
-  font-family: 'Gilroy';
   font-style: normal;
   font-weight: bold;
-  src: url("/fonts/Gilroy/Gilroy-Bold.ttf") format("opentype");
   font-display: swap;
 }
 
 
 @font-face {
   font-family: 'Gilroy';
+  src: url('/fonts/Gilroy/Inter-Bold.eot');
+  src: url('/fonts/Gilroy/Inter-Bold.eot?#iefix') format('embedded-opentype');
+  src: url('/fonts/Gilroy/Inter-Bold.woff2') format('woff2');
+  src: url('/fonts/Gilroy/Inter-Bold.woff') format('woff');
+  src: url("/fonts/Gilroy/Gilroy-Bold.ttf") format("opentype");
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy/Gilroy-Semibold.eot');
+  src: url('/fonts/Gilroy/Gilroy-Semibold.eot?#iefix') format('embedded-opentype');
+  src: url('/fonts/Gilroy/Gilroy-Semibold.woff2') format('woff2');
+  src: url('/fonts/Gilroy/Gilroy-Semibold.woff') format('woff');
+  src: url("/fonts/Gilroy/Gilroy-Semibold.ttf") format("opentype");
   font-style: normal;
   font-weight: 600;
-  src: url("/fonts/Gilroy/Gilroy-Semibold.ttf") format("opentype");
   font-display: swap;
 }

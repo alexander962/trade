@@ -36,7 +36,7 @@ const Advantage = () => {
           >
             <div className={clsx(cn.advantage__block_inner, 'text-center')}>
               <div className={clsx(cn.advantage__block_img)}>
-                <img src="/img/advantage/advantage-img-1.png" alt="img" />
+                <img src="/img/advantage/advantage-img-1.png" alt="" />
               </div>
               <CommonSmallText color="text-black-300 mt-38px">{t.advantageText1}</CommonSmallText>
             </div>
@@ -52,7 +52,7 @@ const Advantage = () => {
           >
             <div className={clsx(cn.advantage__block_inner, 'text-center')}>
               <div className={clsx(cn.advantage__block_img)}>
-                <img src="/img/advantage/advantage-img-2.png" alt="img" />
+                <img src="/img/advantage/advantage-img-2.png" alt="" />
               </div>
               <CommonSmallText color="text-black-300 mt-38px">{t.advantageText2}</CommonSmallText>
             </div>
@@ -68,7 +68,7 @@ const Advantage = () => {
           >
             <div className={clsx(cn.advantage__block_inner, 'text-center')}>
               <div className={clsx(cn.advantage__block_img)}>
-                <img src="/img/advantage/advantage-img-3.png" alt="img" />
+                <img src="/img/advantage/advantage-img-3.png" alt="" />
               </div>
               <CommonSmallText color="text-black-300 mt-38px">{t.advantageText3}</CommonSmallText>
             </div>
@@ -84,7 +84,7 @@ const Advantage = () => {
           >
             <div className={clsx(cn.advantage__block_inner, 'text-center')}>
               <div className={clsx(cn.advantage__block_img)}>
-                <img src="/img/advantage/advantage-img-4.png" alt="img" />
+                <img src="/img/advantage/advantage-img-4.png" alt="" />
               </div>
               <CommonSmallText color="text-black-300 mt-38px">{t.advantageText4}</CommonSmallText>
             </div>
@@ -100,7 +100,7 @@ const Advantage = () => {
           >
             <div className={clsx(cn.advantage__block_inner, 'text-center')}>
               <div className={clsx(cn.advantage__block_img)}>
-                <img src="/img/advantage/advantage-img-5.png" alt="img" />
+                <img src="/img/advantage/advantage-img-5.png" alt="" />
               </div>
               <CommonSmallText color="text-black-300 mt-38px">{t.advantageText5}</CommonSmallText>
             </div>
@@ -116,7 +116,7 @@ const Advantage = () => {
           >
             <div className={clsx(cn.advantage__block_inner, 'text-center')}>
               <div className={clsx(cn.advantage__block_img)}>
-                <img src="/img/advantage/advantage-img-6.png" alt="img" />
+                <img src="/img/advantage/advantage-img-6.png" alt="" />
               </div>
               <CommonSmallText color="text-black-300 mt-38px">{t.advantageText6}</CommonSmallText>
             </div>
