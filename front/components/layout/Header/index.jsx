@@ -1,23 +1,23 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
 import { en } from '../../../locales/en';
 import { ru } from '../../../locales/ru';
 import cn from './style.module.sass';
-import axios from 'axios';
+import { Context } from '../../../pages/_app';
+import { observer } from 'mobx-react-lite';
 
-const Header = ({ user, setUser }) => {
+const Header = () => {
+  const [auth, setAuth] = useState(true);
   const router = useRouter();
   const t = router.locale === 'en' ? en : ru;
+  const { store } = useContext(Context);
 
   const logOut = async () => {
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/logout`);
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      setUser('');
+      await store.logout();
     } catch (e) {
       console.log(e);
     }
@@ -36,9 +36,9 @@ const Header = ({ user, setUser }) => {
           <Link href="/" locale="ru">
             <a className="font-inter text-white uppercase ml-4 380px:ml-8 md:ml-12">ru</a>
           </Link>
-          {user ? (
-            <div className={clsx(cn.header__out)}>
-              <span className="text-white">{user}</span>
+          {store.isAuth ? (
+            <div className={clsx(cn.header__out, 'ml-4 380px:ml-8 md:ml-12')}>
+              <span className="text-white">{store.user.email}</span>
               <div onClick={logOut} className="text-white cursor-pointer">
                 Выход
               </div>
@@ -59,4 +59,4 @@ const Header = ({ user, setUser }) => {
   );
 };
 
-export default Header;
+export default observer(Header);

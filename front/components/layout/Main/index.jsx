@@ -10,15 +10,15 @@ import Statistic from './Statistic';
 import Tools from './Tools';
 import Start from './Start';
 
-const Main = ({ user }) => (
+const Main = () => (
   <div className={clsx(cn.main)}>
-    <Promo user={user} />
+    <Promo />
     <Statistic />
     <Assets />
     <Advantage />
-    <Tools user={user} />
+    <Tools />
     <Feedback />
-    <Start user={user} />
+    <Start />
   </div>
 );
 

@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import Main from '../components/layout/Main';
 import cn from '../styles/Home.module.css';
+import { Context } from './_app';
 
 const Home = () => {
-  const [user, setUser] = useState('');
+  const { store } = useContext(Context);
 
   useEffect(() => {
-    if (localStorage.getItem('user')) {
-      setUser(localStorage.getItem('user'));
+    if (localStorage.getItem('token')) {
+      store.checkAuth();
     }
-  }, [user]);
+  }, []);
 
   return (
     <div className={cn.wrapper}>
-      <Header user={user} setUser={setUser} />
-      <Main user={user} />
+      <Header />
+      <Main />
       <Footer />
     </div>
   );

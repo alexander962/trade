@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
@@ -13,6 +13,7 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import CommonTitle from '../../components/common-components/common-title';
 import cn from './style.module.sass';
 import Link from 'next/link';
+import { Context } from '../_app';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -25,6 +26,7 @@ const Registration = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [severity, setSeverity] = useState('error');
+  const { store } = useContext(Context);
   const errors = [];
   let validEmail = false;
   let validPassword = false;
@@ -49,15 +51,10 @@ const Registration = () => {
 
   const addNewUser = async () => {
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/registration`, {
-        email: email,
-        password: password,
-      });
+      await store.registration(email, password);
       setSeverity('success');
       setMessage('Вы удачно зарегестрированны');
       setOpen(true);
-      localStorage.setItem('token', response.data.accessToken);
-      localStorage.setItem('user', response.data.user.email);
       onResetFilters();
     } catch (e) {
       setMessage('Пользователь с таким email уже существует');

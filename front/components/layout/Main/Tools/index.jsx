@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useContext } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 import 'animate.css/animate.compat.css';
 import Slider from 'react-slick';
@@ -12,9 +12,12 @@ import { en } from '../../../../locales/en';
 import { ru } from '../../../../locales/ru';
 import cn from './style.module.sass';
 import { useWindowSize } from '../../../../hooks/useWindowSize';
+import { Context } from '../../../../pages/_app';
+import { observer } from 'mobx-react-lite';
 
-const Tools = ({ user }) => {
+const Tools = () => {
   const [width, height] = useWindowSize();
+  const { store } = useContext(Context);
 
   const settings = {
     dots: true,
@@ -160,11 +163,11 @@ const Tools = ({ user }) => {
         )}
 
         <div className={clsx(cn.tools__block_shadow)}>
-          {!user && <Button properties="md:mt-220px">{t.toolsButton}</Button>}
+          {!store.isAuth && <Button properties="md:mt-220px">{t.toolsButton}</Button>}
         </div>
       </div>
     </section>
   );
 };
 
-export default Tools;
+export default observer(Tools);

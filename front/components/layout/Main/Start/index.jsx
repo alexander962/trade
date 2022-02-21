@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useContext } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 import Button from '../../../forms/Button';
@@ -8,10 +8,13 @@ import CommonTitle from '../../../common-components/common-title';
 import { en } from '../../../../locales/en';
 import { ru } from '../../../../locales/ru';
 import cn from './style.module.sass';
+import { Context } from '../../../../pages/_app';
+import { observer } from 'mobx-react-lite';
 
-const Start = ({ user }) => {
+const Start = () => {
   const router = useRouter();
   const t = router.locale === 'en' ? en : ru;
+  const { store } = useContext(Context);
 
   return (
     <section
@@ -96,9 +99,9 @@ const Start = ({ user }) => {
           </ScrollAnimation>
         </div>
       </div>
-      {!user && <Button properties="text-center mx-auto">{t.startButton}</Button>}
+      {!store.isAuth && <Button properties="text-center mx-auto">{t.startButton}</Button>}
     </section>
   );
 };
 
-export default Start;
+export default observer(Start);

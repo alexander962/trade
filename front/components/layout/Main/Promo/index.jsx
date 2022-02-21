@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useContext } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 import Button from '../../../forms/Button';
@@ -8,10 +8,13 @@ import CommonSmallText from '../../../common-components/common-small-text';
 import { en } from '../../../../locales/en';
 import { ru } from '../../../../locales/ru';
 import cn from './style.module.sass';
+import { Context } from '../../../../pages/_app';
+import { observer } from 'mobx-react-lite';
 
-const Promo = ({ user }) => {
+const Promo = () => {
   const router = useRouter();
   const t = router.locale === 'en' ? en : ru;
+  const { store } = useContext(Context);
 
   return (
     <section className={clsx(cn.promo, 'bg-black-100')}>
@@ -39,7 +42,7 @@ const Promo = ({ user }) => {
               {t.promoText}
             </ScrollAnimation>
           </CommonSmallText>
-          {!user && (
+          {!store.isAuth && (
             <Button properties="mt-40px w-full md:w-fit">
               <ScrollAnimation
                 delay={0}
@@ -70,4 +73,4 @@ const Promo = ({ user }) => {
   );
 };
 
-export default Promo;
+export default observer(Promo);

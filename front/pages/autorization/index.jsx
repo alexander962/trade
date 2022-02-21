@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { en } from '../../locales/en';
 import { ru } from '../../locales/ru';
 import ScrollAnimation from 'react-animate-on-scroll';
+import { Context } from '../_app';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -23,6 +24,7 @@ const Autorization = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [severity, setSeverity] = useState('error');
+  const { store } = useContext(Context);
   const errors = [];
   let validEmail = false;
   let validPassword = false;
@@ -47,15 +49,10 @@ const Autorization = () => {
 
   const signInCheck = async () => {
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
-        email: email,
-        password: password,
-      });
+      await store.login(email, password);
       setSeverity('success');
       setMessage('Вы удачно авторизованы');
       setOpen(true);
-      localStorage.setItem('token', response.data.accessToken);
-      localStorage.setItem('user', response.data.user.email);
       onResetFilters();
     } catch (e) {
       setMessage('Пользователь с таким email не найден');
